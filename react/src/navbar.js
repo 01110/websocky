@@ -20,8 +20,11 @@ function Navbar({default_url, url_setter})
 
   return (
     <nav className="navbar navbar-light bg-light">
-      <form className="container-fluid w-50">      
-        <div className="input-group">
+      <form className="container-fluid">      
+      <div className="navbar-brand ml-3">
+        &#123;websocky&#125;
+      </div>
+        <div className="w-50 input-group position-absolute top-0 start-50 translate-middle-x mt-2">
           <span className="input-group-text my-auto" style={{height: '38px'}}>
             <ConnectionIcon url={url}/>
           </span>
