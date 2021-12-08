@@ -48,6 +48,9 @@ npm install
 
 #start electron in dev mode, automatically copies build folder from react module
 npm start
+
+#make deb package
+npm run make
 ```
 
 ## This project is powered by:
