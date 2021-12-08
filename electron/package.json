@@ -1,5 +1,6 @@
 {
   "name": "websocky",
+  "description": "a minimalistic websocket client GUI, written in react, wrapped in electron.",
   "version": "1.0.0",
   "main": "main.js",
   "homepage": "./",
