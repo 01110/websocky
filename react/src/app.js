@@ -3,7 +3,7 @@ import useWebSocket from 'react-use-websocket';
 import useLocalStorage from 'react-use-localstorage';
 import MessageHistory from "./msg_history";
 import Navbar from './navbar';
-import ConsoleLine from './console_line';
+
 import SendButtonGroup from './sendButtonsGroup';
 
 const default_url = 'ws://localhost';
@@ -21,16 +21,11 @@ function App()
 
   return (
     <div>
-      <Navbar default_url={wsUrl} url_setter={setWsUrl} />    
+      <Navbar default_url={wsUrl} url_setter={setWsUrl} />
       <div className="row mb-0 w-100">
-        <div className="col-8 offset-2 mb-0 mr-0 ml-0">
-          <MessageHistory url={wsUrl} tx={sentMessage}/>
-          <ConsoleLine rs={readyState} send={send}/>
-        </div>        
-        <div className="col-2 mt-0 mb-0 mr-0 ml-0 pt-3">
-          <SendButtonGroup readyState={readyState} send={send}/>
-        </div>
-      </div>      
+        <MessageHistory url={wsUrl} tx={sentMessage} rs={readyState} send={send}/>
+        <SendButtonGroup readyState={readyState} send={send}/>
+      </div>
     </div>
   );
 }

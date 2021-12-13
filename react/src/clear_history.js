@@ -1,13 +1,10 @@
 import React, { useCallback } from 'react';
 
-function ClearHistoryButton() 
+function ClearHistoryButton({clearHistory}) 
 {
   const onClick = useCallback(() => {
-    const element = document.querySelector('#msg-history');
-    while (element.lastChild) {
-      element.removeChild(element.lastChild);
-  }
-  }, []);
+    clearHistory();
+  }, [clearHistory]);
 
   return (
       <button className="btn btn-outline-danger" type="button" onClick={onClick}><i class="bi bi-eraser"></i></button>

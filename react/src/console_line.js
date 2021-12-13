@@ -3,7 +3,7 @@ import {ReadyState} from 'react-use-websocket';
 import ClearHistoryButton from './clear_history';
 import DownloadHistoryButton from './download_history';
 
-function ConsoleLine({send, rs}) 
+function ConsoleLine({send, rs, clearHistory}) 
 {
   const [message, setMessage] = useState("");
   const handleClickSendMessage = useCallback((e) => {
@@ -32,7 +32,7 @@ function ConsoleLine({send, rs})
         <input className="form-control" type="text" placeholder="Message" aria-label="default input example" onKeyDown={e => handleKeyDown(e)} onChange={e => {setMessage(e.target.value);}}></input>
         <button className="btn btn-outline-primary" type="button" onClick={handleClickSendMessage} disabled={send_disabled}><i className="bi bi-send"></i></button>
         <DownloadHistoryButton />
-        <ClearHistoryButton />
+        <ClearHistoryButton clearHistory={clearHistory}/>
       </div>  
     </form>
   );
