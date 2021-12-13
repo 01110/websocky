@@ -25,7 +25,7 @@ function DownloadHistoryButton()
   }, []);
 
   return (
-      <button className="btn btn-outline-primary" type="button" onClick={downloadTxtFile}><i class="bi bi-arrow-down-circle"></i></button>
+      <button className="btn btn-outline-primary" type="button" onClick={downloadTxtFile}><i className="bi bi-arrow-down-circle"></i></button>
   );    
 };
 

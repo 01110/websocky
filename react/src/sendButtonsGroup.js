@@ -5,7 +5,6 @@ function SendButtonGroup({send, readyState})
 {
   const [focused, setFocused] = useState(false);
 
-
   return (
     <div className="col-2 mt-0 mb-0 mr-0 ml-0 pt-3">
       <div className="container-fluid px-0">
