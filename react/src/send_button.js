@@ -2,14 +2,18 @@ import React, { useCallback, useEffect, useState } from 'react';
 import {ReadyState} from 'react-use-websocket';
 import useLocalStorage from 'react-use-localstorage';
 
-function SendButton({send, storage_key, readyState, label, group_focused, group_set_focused}) 
+function SendButton({send, storage_key, readyState, label}) 
 {
   const [item, setItem] = useLocalStorage(storage_key);
   const [message, setMessage] = useState(item);
   const [disabled, setDisabled] = useState(true);
   const [focused, setFocused] = useState(false);
   const handleClickSendMessage = useCallback(() => {if(message.length > 0) send(message)}, [send, message]);
-  const handleDocKeyDown = useCallback((ev) => {if(label === ev.key && message.length > 0 && !focused && !group_focused) send(message);}, [message, label, send, focused, group_focused])
+  const handleDocKeyDown = useCallback((ev) => {
+    if(document.activeElement !== document.body) return;
+    if(label === ev.key && message.length > 0 && !focused) 
+      send(message);
+  }, [message, label, send, focused])
   const handleKeyDown = useCallback( (e) => { 
     if(e.key === "Enter")
     {
@@ -25,10 +29,6 @@ function SendButton({send, storage_key, readyState, label, group_focused, group_
   useEffect(() => {
     setDisabled(readyState !== ReadyState.OPEN);
   }, [readyState, setDisabled]);
-
-  useEffect(() => {
-    group_set_focused(focused)
-  }, [focused, group_set_focused]);
 
   useEffect(() =>
   {
